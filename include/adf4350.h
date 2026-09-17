@@ -13,13 +13,13 @@
 #include <SPI.h>
 
 // ============================================
-// РАСПИНОВКА — ИЗМЕНИ ПОД СВОЮ СХЕМУ
+// РАСПИНОВКА — ПОД ТВОЮ ПЛАТУ
 // ============================================
-#define ADF4350_PIN_MOSI    7    // SDATA — данные от ESP32 к ADF4350
-#define ADF4350_PIN_SCLK    4    // SCLK  — тактовый сигнал
-#define ADF4350_PIN_LE      5    // LE    — защёлка (Load Enable), активный LOW
-#define ADF4350_PIN_CE      6    // CE    — включение чипа, активный HIGH
-#define ADF4350_PIN_MUXOUT  3    // MUXOUT — выход (Lock Detect)
+#define ADF4350_PIN_MOSI    7    // GPIO7  — SDATA (SPI_MOSI)
+#define ADF4350_PIN_SCLK    6    // GPIO6  — SCLK  (SPI_SCK)
+#define ADF4350_PIN_LE      3    // GPIO3  — LE    (Latch Enable)
+#define ADF4350_PIN_CE      1    // GPIO1  — CE    (Chip Enable)
+#define ADF4350_PIN_MUXOUT  2    // GPIO2  — MUXOUT (Lock Detect)
 
 // ============================================
 // ПАРАМЕТРЫ СИНТЕЗАТОРА
@@ -141,8 +141,6 @@ private:
     uint16_t _rCounter;
     
     void _calculatePFD();
-    void _updateReg0(uint16_t int_val, uint16_t frac_val);
-    void _updateReg1(uint16_t mod_val);
 };
 
 #endif // ADF4350_H
